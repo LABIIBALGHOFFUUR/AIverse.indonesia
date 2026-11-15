@@ -1,52 +1,79 @@
-/* Glassmorphism Styles */
+/* Glassmorphism Ultra Modern */
 .glass {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(116, 155, 131, 0.25);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(116, 155, 131, 0.22);
 }
 .dark .glass {
-    background: rgba(20, 32, 26, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(158, 187, 169, 0.16);
+    background: rgba(18, 30, 24, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(158, 187, 169, 0.15);
 }
 
-/* Ambient Moving Orbs */
+/* Ambient Moving Orbs (Background Bergerak Aktif) */
 @keyframes floatOrb {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(35px, -30px) scale(1.08); }
+    50% { transform: translate(45px, -40px) scale(1.12); }
 }
-.orb-animate { animation: floatOrb 12s ease-in-out infinite; }
-.orb-animate-delay { animation: floatOrb 15s ease-in-out infinite reverse; }
+.orb-animate { animation: floatOrb 14s ease-in-out infinite; }
+.orb-animate-delay { animation: floatOrb 18s ease-in-out infinite reverse; }
 
-/* Marquee / Running Text */
+/* Slow Bounce Animation */
+@keyframes slowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.animate-bounce-slow { animation: slowBounce 4s ease-in-out infinite; }
+
+/* Gradient Text Animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+    background-size: 200% auto;
+    animation: gradientMove 6s linear infinite;
+}
+
+/* Marquee / Running Text Berjalan */
 @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
 }
+@keyframes marqueeReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
 .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 32s linear infinite;
+    animation: marquee 35s linear infinite;
 }
-.animate-marquee:hover { animation-play-state: paused; }
+.animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marqueeReverse 35s linear infinite;
+}
+.animate-marquee:hover, .animate-marquee-reverse:hover { animation-play-state: paused; }
 
-/* Card Hover */
+/* Card Hover 3D Lift & Glow */
 .ai-card {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .ai-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(1.01);
     border-color: #749b83;
-    box-shadow: 0 18px 35px -10px rgba(83, 126, 100, 0.28);
+    box-shadow: 0 22px 40px -12px rgba(83, 126, 100, 0.32);
 }
 
 /* Scroll Reveal */
 .reveal {
     opacity: 0;
-    transform: translateY(22px);
-    transition: all 0.7s ease-out;
+    transform: translateY(28px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.active {
     opacity: 1;
@@ -54,6 +81,7 @@
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #121d17; }
-::-webkit-scrollbar-thumb { background: #537e64; border-radius: 4px; }
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #0d1410; }
+::-webkit-scrollbar-thumb { background: #537e64; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #749b83; }
