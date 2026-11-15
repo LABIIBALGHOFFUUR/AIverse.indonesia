@@ -187,33 +187,33 @@ function renderCards() {
     });
 
     if (filtered.length === 0) {
-        aiGrid.innerHTML = `<div class="col-span-full text-center py-10 text-slate-500">Tidak ditemukan AI yang cocok dengan pencarianmu.</div>`;
+        aiGrid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 glass rounded-3xl">Tidak ditemukan AI yang cocok dengan kata kunci pencarianmu.</div>`;
         return;
     }
 
     filtered.forEach((ai) => {
         const initials = ai.name.substring(0, 2).toUpperCase();
         const card = document.createElement('div');
-        card.className = 'ai-card glass rounded-2xl p-5 cursor-pointer flex flex-col justify-between group';
+        card.className = 'ai-card glass rounded-3xl p-6 cursor-pointer flex flex-col justify-between group shadow-xl shadow-sage-500/5';
         card.innerHTML = `
             <div>
-                <div class="flex items-center justify-between gap-3 mb-3.5">
-                    <div class="w-12 h-12 rounded-xl bg-sage-500/20 border border-sage-400/30 flex items-center justify-center overflow-hidden shrink-0">
-                        <img src="${ai.logo}" alt="Logo ${ai.name}" class="w-8 h-8 object-contain"
+                <div class="flex items-center justify-between gap-3 mb-4">
+                    <div class="w-14 h-14 rounded-2xl bg-sage-500/20 border border-sage-400/30 flex items-center justify-center overflow-hidden shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                        <img src="${ai.logo}" alt="Logo ${ai.name}" class="w-9 h-9 object-contain"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <span style="display:none" class="w-full h-full items-center justify-center font-extrabold text-sage-700 dark:text-sage-300 text-sm">${initials}</span>
                     </div>
-                    <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-sage-500/15 text-sage-700 dark:text-sage-300">
+                    <span class="text-[11px] font-extrabold px-3 py-1 rounded-xl bg-sage-500/15 text-sage-700 dark:text-sage-300 border border-sage-500/10">
                         ${ai.category}
                     </span>
                 </div>
-                <h3 class="text-lg font-extrabold group-hover:text-sage-500 transition">${ai.name}</h3>
-                <p class="text-[11px] text-slate-400 mb-2">Oleh ${ai.dev}</p>
+                <h3 class="text-xl font-extrabold group-hover:text-sage-500 transition-colors">${ai.name}</h3>
+                <p class="text-xs text-slate-400 font-medium mb-3">Oleh ${ai.dev}</p>
                 <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">${ai.short}</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-sage-300/20 dark:border-sage-700/40 flex items-center justify-between text-xs font-bold text-sage-600 dark:text-sage-300">
-                <span>Tinjau AI</span>
-                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            <div class="mt-6 pt-4 border-t border-sage-300/20 dark:border-sage-700/40 flex items-center justify-between text-xs font-bold text-sage-600 dark:text-sage-300">
+                <span>Tinjau Informasi AI</span>
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
             </div>
         `;
         card.addEventListener('click', () => openModal(ai));
@@ -228,7 +228,7 @@ const closeModal = document.getElementById('closeModal');
 function openModal(ai) {
     const initials = ai.name.substring(0, 2).toUpperCase();
     document.getElementById('modalLogoBox').innerHTML = `
-        <img src="${ai.logo}" alt="${ai.name}" class="w-11 h-11 object-contain"
+        <img src="${ai.logo}" alt="${ai.name}" class="w-10 h-10 object-contain"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <span style="display:none" class="w-full h-full items-center justify-center font-extrabold text-xl text-sage-600 dark:text-sage-300">${initials}</span>
     `;
@@ -240,7 +240,7 @@ function openModal(ai) {
     document.getElementById('modalLink').href = ai.url;
 
     const featList = document.getElementById('modalFeatures');
-    featList.innerHTML = ai.features.map(f => `<li>${f}</li>`).join('');
+    featList.innerHTML = ai.features.map(f => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-sage-500 mt-1"></i><span>${f}</span></li>`).join('');
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');
@@ -262,10 +262,10 @@ searchInput.addEventListener('input', renderCards);
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         filterBtns.forEach(b => {
-            b.classList.remove('bg-sage-600', 'text-white');
+            b.classList.remove('bg-sage-600', 'text-white', 'shadow-md');
             b.classList.add('glass');
         });
-        btn.classList.add('bg-sage-600', 'text-white');
+        btn.classList.add('bg-sage-600', 'text-white', 'shadow-md');
         btn.classList.remove('glass');
         currentCategory = btn.dataset.cat;
         renderCards();
@@ -278,7 +278,7 @@ const themeIcon = document.getElementById('themeIcon');
 themeToggle.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
     const isDark = document.documentElement.classList.contains('dark');
-    themeIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    themeIcon.className = isDark ? 'fa-solid fa-sun text-base' : 'fa-solid fa-moon text-base';
 });
 
 // Mobile Menu
@@ -297,7 +297,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
     });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 reveals.forEach(r => revealObserver.observe(r));
 
 document.querySelectorAll('.counter').forEach(counter => {
