@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIVerse Indonesia — Pusat Edukasi & Direktori Kecerdasan Buatan</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+                    colors: {
+                        sage: {
+                            50: '#f4f7f5', 100: '#e3ebe6', 200: '#c7d8ce', 300: '#9ebba9',
+                            400: '#749b83', 500: '#537e64', 600: '#40644e', 700: '#345040',
+                            800: '#2b4135', 900: '#24362c', 950: '#121d17',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-sage-50 text-slate-800 dark:bg-sage-950 dark:text-slate-100 transition-colors duration-300 relative overflow-x-hidden">
+
+    <!-- Background Moving Glows -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="orb-animate absolute -top-24 -left-24 w-96 h-96 rounded-full bg-sage-400/20 dark:bg-sage-500/15 blur-3xl"></div>
+        <div class="orb-animate-delay top-1/2 -right-24 w-[28rem] h-[28rem] rounded-full bg-emerald-400/15 dark:bg-sage-400/10 blur-3xl absolute"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 glass border-b border-sage-200/50 dark:border-sage-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#beranda" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sage-400 to-sage-700 flex items-center justify-center text-white shadow-md group-hover:rotate-6 transition-transform">
+                        <i class="fa-solid fa-brain text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-lg tracking-tight text-sage-800 dark:text-sage-200">AIVerse</span>
+                        <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-sage-500/20 text-sage-700 dark:text-sage-300 ml-0.5">INDONESIA</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+                    <a href="#beranda" class="hover:text-sage-500 transition">Beranda</a>
+                    <a href="#direktori" class="hover:text-sage-500 transition">Katalog AI</a>
+                    <a href="#manfaat" class="hover:text-sage-500 transition">Manfaat AI</a>
+                    <a href="#keamanan" class="hover:text-sage-500 transition flex items-center gap-1 text-amber-600 dark:text-amber-400">
+                        <i class="fa-solid fa-shield-halved"></i> Legal vs Ilegal
+                    </a>
+                    <a href="#pembuat" class="hover:text-sage-500 transition">Kreator</a>
+                    <a href="#kontak" class="hover:text-sage-500 transition">Kontak</a>
+                </nav>
+
+                <div class="flex items-center gap-2">
+                    <button id="themeToggle" aria-label="Ganti Tema" class="w-10 h-10 rounded-xl glass flex items-center justify-center text-sage-700 dark:text-sage-300 hover:bg-sage-500/20 transition">
+                        <i id="themeIcon" class="fa-solid fa-sun"></i>
+                    </button>
+                    <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-xl glass flex items-center justify-center text-sage-700 dark:text-sage-300">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-sage-200/40 dark:border-sage-800 px-4 pt-3 pb-5 space-y-2 text-sm font-semibold">
+            <a href="#beranda" class="block py-2 px-3 rounded-lg hover:bg-sage-500/15">🏠 Beranda</a>
+            <a href="#direktori" class="block py-2 px-3 rounded-lg hover:bg-sage-500/15">🤖 Katalog & Tinjau AI</a>
+            <a href="#manfaat" class="block py-2 px-3 rounded-lg hover:bg-sage-500/15">✨ Manfaat Kecerdasan Buatan</a>
+            <a href="#keamanan" class="block py-2 px-3 rounded-lg text-amber-600 dark:text-amber-400 hover:bg-sage-500/15">⚠️ Waspada: AI Legal vs Ilegal</a>
+            <a href="#pembuat" class="block py-2 px-3 rounded-lg hover:bg-sage-500/15">👨‍💻 Tentang Pembuat Web</a>
+            <a href="#kontak" class="block py-2 px-3 rounded-lg hover:bg-sage-500/15">📲 Kontak & Komunitas</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative z-10 pt-14 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-bold text-sage-700 dark:text-sage-300 mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            ENSIKLOPEDIA & PUSAT LITERASI AI INDONESIA
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto">
+            Kenali, Pahami & Tinjau Dunia <br>
+            <span class="bg-gradient-to-r from-sage-500 via-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                Artificial Intelligence
+            </span>
+        </h1>
+
+        <p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Ruang belajar terbuka untuk mengenal puluhan teknologi AI populer, fungsi aslinya, manfaat di kehidupan nyata, serta panduan membedakan AI resmi dan berbahaya.
+        </p>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="#direktori" class="px-6 py-3.5 rounded-xl bg-sage-600 hover:bg-sage-500 text-white font-bold shadow-lg shadow-sage-600/30 transition flex items-center gap-2">
+                <i class="fa-solid fa-compass"></i> Jelajahi Direktori AI
+            </a>
+            <a href="#keamanan" class="px-6 py-3.5 rounded-xl glass hover:bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold border border-amber-500/30 transition flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation"></i> Cek Ciri AI Ilegal
+            </a>
+        </div>
+
+        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div class="glass p-4 rounded-2xl">
+                <div class="text-2xl sm:text-3xl font-extrabold text-sage-600 dark:text-sage-300 counter" data-target="24">0</div>
+                <div class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">Tinjauan AI Lengkap</div>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="text-2xl sm:text-3xl font-extrabold text-sage-600 dark:text-sage-300 counter" data-target="6">0</div>
+                <div class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">Kategori Teknologi</div>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="text-2xl sm:text-3xl font-extrabold text-sage-600 dark:text-sage-300">100%</div>
+                <div class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">Edukasi & Literasi</div>
+            </div>
+            <div class="glass p-4 rounded-2xl">
+                <div class="text-2xl sm:text-3xl font-extrabold text-amber-500">24/7</div>
+                <div class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">Panduan Waspada AI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RUNNING TEXT / MARQUEE -->
+    <div class="relative z-10 py-3.5 bg-sage-700/10 dark:bg-sage-800/40 border-y border-sage-300/30 dark:border-sage-700/50 overflow-hidden my-6">
+        <div class="animate-marquee flex items-center gap-8 text-sm font-bold text-sage-700 dark:text-sage-300">
+            <span>🤖 ChatGPT</span><span>•</span>
+            <span>✨ Google Gemini</span><span>•</span>
+            <span>🧠 Claude AI</span><span>•</span>
+            <span>🐋 DeepSeek</span><span>•</span>
+            <span>🔍 Perplexity AI</span><span>•</span>
+            <span>🎨 Midjourney</span><span>•</span>
+            <span>🎬 OpenAI Sora</span><span>•</span>
+            <span>🎥 Runway Gen-3</span><span>•</span>
+            <span>🎙️ ElevenLabs</span><span>•</span>
+            <span>🎵 Suno AI</span><span>•</span>
+            <span>💻 GitHub Copilot</span><span>•</span>
+            <span>📊 Gamma AI</span><span>•</span>
+            <span>🤖 ChatGPT</span><span>•</span>
+            <span>✨ Google Gemini</span><span>•</span>
+            <span>🧠 Claude AI</span><span>•</span>
+            <span>🐋 DeepSeek</span><span>•</span>
+            <span>🔍 Perplexity AI</span><span>•</span>
+            <span>🎨 Midjourney</span><span>•</span>
+            <span>🎬 OpenAI Sora</span><span>•</span>
+            <span>🎥 Runway Gen-3</span><span>•</span>
+            <span>🎙️ ElevenLabs</span><span>•</span>
+            <span>🎵 Suno AI</span><span>•</span>
+            <span>💻 GitHub Copilot</span><span>•</span>
+            <span>📊 Gamma AI</span><span>•</span>
+        </div>
+    </div>
+
+    <!-- DIREKTORI AI -->
+    <section id="direktori" class="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+            <h2 class="text-2xl sm:text-4xl font-extrabold">Katalog & Ruang Tinjau AI</h2>
+            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                Klik pada kartu AI mana pun untuk membuka <strong>lembar tinjauan lengkap</strong>.
+            </p>
+        </div>
+
+        <div class="glass p-4 rounded-2xl mb-8 flex flex-col md:flex-row gap-4 justify-between items-center reveal">
+            <div class="relative w-full md:w-80">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                <input type="text" id="searchInput" placeholder="Cari nama AI atau kegunaan..." 
+                    class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/80 dark:bg-sage-900/80 border border-sage-300/50 dark:border-sage-700 text-sm focus:outline-none focus:ring-2 focus:ring-sage-500">
+            </div>
+
+            <div id="categoryFilters" class="flex flex-wrap justify-center gap-2 text-xs font-bold">
+                <button data-cat="all" class="filter-btn active px-3.5 py-2 rounded-xl bg-sage-600 text-white transition">Semua (24)</button>
+                <button data-cat="Teks & Chat" class="filter-btn px-3.5 py-2 rounded-xl glass hover:bg-sage-500/20 transition">Teks & Chat</button>
+                <button data-cat="Gambar & Desain" class="filter-btn px-3.5 py-2 rounded-xl glass hover:bg-sage-500/20 transition">Gambar & Desain</button>
+                <button data-cat="Video & Animasi" class="filter-btn px-3.5 py-2 rounded-xl glass hover:bg-sage-500/20 transition">Video & Animasi</button>
+                <button data-cat="Suara & Musik" class="filter-btn px-3.5 py-2 rounded-xl glass hover:bg-sage-500/20 transition">Suara & Musik</button>
+                <button data-cat="Coding & Kerja" class="filter-btn px-3.5 py-2 rounded-xl glass hover:bg-sage-500/20 transition">Coding & Kerja</button>
+            </div>
+        </div>
+
+        <div id="aiGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+    </section>
+
+    <!-- MANFAAT AI -->
+    <section id="manfaat" class="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+            <h2 class="text-2xl sm:text-4xl font-extrabold">Manfaat Nyata Kecerdasan Buatan</h2>
+            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                Peran AI sebagai asisten cerdas yang mempercepat pekerjaan manusia di berbagai bidang.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal">
+            <div class="glass p-6 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-sage-500/20 text-sage-600 dark:text-sage-300 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Pendidikan & Belajar Bahasa</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Menerjemahkan bahasa asing, merangkum materi pelajaran, hingga menjadi teman latihan percakapan kapan saja.
+                </p>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-sage-500/20 text-sage-600 dark:text-sage-300 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Efisiensi & Otomatisasi Kerja</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Menghemat waktu menyusun laporan, menulis kode program, menganalisis data, hingga merancang slide presentasi.
+                </p>
+            </div>
+
+            <div class="glass p-6 rounded-2xl">
+                <div class="w-12 h-12 rounded-xl bg-sage-500/20 text-sage-600 dark:text-sage-300 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Kreativitas Digital & Konten</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Memudahkan kreator membuat ilustrasi visual, pengisi suara (voice-over), musik latar, serta ide naskah video edukasi.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEAMANAN: LEGAL VS ILEGAL -->
+    <section id="keamanan" class="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+            <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-700 dark:text-amber-300 text-xs font-extrabold">
+                PANDUAN LITERASI KEAMANAN DIGITAL
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mt-3">Waspada: Ciri AI Legal vs AI Ilegal</h2>
+            <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                Kenali perbedaannya agar terhindar dari pencurian data dan pelanggaran hukum siber.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 reveal">
+            <div class="glass p-6 sm:p-8 rounded-3xl border-l-4 border-l-emerald-500">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-emerald-700 dark:text-emerald-400">Ciri-Ciri AI Resmi & Legal</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>Pengembang Jelas:</strong> Memiliki perusahaan resmi, situs web terverifikasi, dan kebijakan privasi transparan.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>Filter Keamanan:</strong> Menolak membuat konten berbahaya, pornografi ilegal, atau pemalsuan identitas.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>Distribusi Resmi:</strong> Diunduh langsung dari situs resmi atau Play Store / App Store terverifikasi.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="glass p-6 sm:p-8 rounded-3xl border-l-4 border-l-rose-500">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/20 text-rose-500 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-skull-crossbones"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-rose-600 dark:text-rose-400">Ciri-Ciri AI Ilegal / Berbahaya</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                        <span><strong>Aplikasi MOD / Bajakan:</strong> Menawarkan "AI Pro Gratis" lewat link mencurigakan yang sering disisipi malware.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                        <span><strong>Deepfake Tanpa Izin:</strong> Alat manipulasi wajah/suara orang lain demi penipuan siber.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-xmark text-rose-500 mt-1"></i>
+                        <span><strong>Phishing (Situs Tiruan):</strong> Menggunakan nama mirip AI terkenal untuk mencuri akun email dan kata sandi.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-8 glass p-6 rounded-2xl border border-amber-500/40 bg-amber-500/10 reveal">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h4 class="font-extrabold text-amber-700 dark:text-amber-300 text-base">DISCLAIMER & PERINGATAN KEAMANAN</h4>
+                    <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 mt-1 leading-relaxed">
+                        Seluruh informasi di <strong>AIVerse Indonesia</strong> disajikan murni untuk edukasi. Dilarang keras memasukkan data rahasia pribadi (KTP, rekening, password) ke platform AI manapun. Segala bentuk penyalahgunaan teknologi menjadi tanggung jawab masing-masing pengguna.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFIL PEMBUAT -->
+    <section id="pembuat" class="relative z-10 py-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto reveal">
+        <div class="glass p-8 sm:p-10 rounded-3xl relative overflow-hidden border border-sage-400/30">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="relative shrink-0">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-br from-sage-400 via-sage-600 to-emerald-800 flex items-center justify-center text-white text-4xl font-extrabold shadow-xl">
+                        LG
+                    </div>
+                    <span class="absolute -bottom-2 -right-2 px-2.5 py-1 rounded-lg bg-emerald-500 text-slate-950 text-[10px] font-extrabold shadow">
+                        AI OBSERVER
+                    </span>
+                </div>
+
+                <div class="text-center md:text-left">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-sage-600 dark:text-sage-400">
+                        Inisiator & Kurator Pengetahuan AI
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-1">
+                        LABIIB AL GHOFFUUR <span class="text-sage-600 dark:text-sage-300 text-lg sm:text-xl font-bold">Mntr.Br,Bs,BT</span>
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Seorang pengamat teknologi digital, edukator, dan kurator ekosistem kecerdasan buatan yang aktif membedah perkembangan berbagai model AI global—mulai dari AI produktivitas resmi hingga menelusuri celah, informasi mendalam, serta pola peredaran AI ilegal di ruang siber. Melalui <strong>AIVerse Indonesia</strong>, ia membagikan rangkuman wawasan agar masyarakat luas melek teknologi dan tetap waspada terhadap risiko keamanan digital.
+                    </p>
+                    <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2 text-xs font-semibold">
+                        <span class="px-3 py-1 rounded-lg bg-sage-500/15 text-sage-700 dark:text-sage-300">🔍 Kurator Ekosistem AI</span>
+                        <span class="px-3 py-1 rounded-lg bg-sage-500/15 text-sage-700 dark:text-sage-300">🛡️ Edukator Keamanan Digital</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="relative z-10 py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center reveal">
+        <h2 class="text-2xl sm:text-3xl font-extrabold">Terhubung & Ikuti Update Literasi AI</h2>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto">
+            Punya pertanyaan seputar edukasi AI atau ingin mengikuti update informasi terbaru? Hubungi atau ikuti kanal resmi kami:
+        </p>
+
+        <div class="mt-7 flex flex-wrap justify-center gap-3.5">
+            <a href="https://wa.me/6280000000000" target="_blank" class="px-5 py-3 rounded-xl glass hover:bg-emerald-500/20 text-sm font-bold flex items-center gap-2 transition">
+                <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i> WhatsApp
+            </a>
+            <a href="https://whatsapp.com/channel/" target="_blank" class="px-5 py-3 rounded-xl glass hover:bg-emerald-500/20 text-sm font-bold flex items-center gap-2 transition">
+                <i class="fa-solid fa-bullhorn text-emerald-500 text-base"></i> Saluran WhatsApp
+            </a>
+            <a href="https://instagram.com/" target="_blank" class="px-5 py-3 rounded-xl glass hover:bg-pink-500/20 text-sm font-bold flex items-center gap-2 transition">
+                <i class="fa-brands fa-instagram text-pink-500 text-lg"></i> Instagram
+            </a>
+            <a href="mailto:emailanda@gmail.com" class="px-5 py-3 rounded-xl glass hover:bg-rose-500/20 text-sm font-bold flex items-center gap-2 transition">
+                <i class="fa-solid fa-envelope text-rose-500 text-base"></i> Gmail
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-sage-200/50 dark:border-sage-800/80 py-8 px-4 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p class="font-bold text-slate-700 dark:text-slate-300">
+            &copy; 2026 AIVerse Indonesia — Dikembangkan oleh LABIIB AL GHOFFUUR Mntr.Br,Bs,BT
+        </p>
+        <p class="mt-1">Portal Edukasi & Direktori Kecerdasan Buatan Indonesia.</p>
+    </footer>
+
+    <!-- MODAL TINJAU AI -->
+    <div id="aiModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+        <div class="glass bg-white dark:bg-sage-900 w-full max-w-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-sage-400/40 relative animate-[fadeIn_0.25s_ease-out] max-h-[90vh] overflow-y-auto">
+            <button id="closeModal" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-500/20 hover:bg-rose-500 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-4 mb-5">
+                <div id="modalLogoBox" class="w-16 h-16 rounded-2xl bg-sage-500/20 flex items-center justify-center overflow-hidden shrink-0 border border-sage-400/30"></div>
+                <div>
+                    <span id="modalCategory" class="text-xs font-extrabold px-2.5 py-0.5 rounded-md bg-sage-500/20 text-sage-700 dark:text-sage-300"></span>
+                    <h3 id="modalTitle" class="text-2xl font-extrabold mt-1"></h3>
+                    <p id="modalDev" class="text-xs text-slate-500 dark:text-slate-400"></p>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-sm">
+                <div>
+                    <h4 class="font-bold text-sage-700 dark:text-sage-300 mb-1">📖 Penjelasan & Tinjauan AI</h4>
+                    <p id="modalDesc" class="text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sage-700 dark:text-sage-300 mb-1.5">⚡ Bisa Apa Saja? (Fitur Utama)</h4>
+                    <ul id="modalFeatures" class="list-disc list-inside space-y-1 text-slate-600 dark:text-slate-300"></ul>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-sage-500/10 border border-sage-400/20 flex flex-wrap justify-between items-center gap-2">
+                    <div>
+                        <span class="text-xs text-slate-500 dark:text-slate-400 block">Status Lisensi & Akses:</span>
+                        <span id="modalLicense" class="font-bold text-emerald-600 dark:text-emerald-400"></span>
+                    </div>
+                    <a id="modalLink" href="#" target="_blank" class="px-4 py-2 rounded-xl bg-sage-600 hover:bg-sage-500 text-white text-xs font-bold transition flex items-center gap-1.5">
+                        Kunjungi Situs Resmi <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JS -->
+    <script src="app.js"></script>
+</body>
+</html>
